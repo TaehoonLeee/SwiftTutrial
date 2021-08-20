@@ -1,7 +1,7 @@
 import RxSwift
 import Combine
 
-class StockListViewModel {
+class StockListViewModel: BaseViewModel {
     
     @Published
     var stocks: [Stock] = []
@@ -12,13 +12,17 @@ class StockListViewModel {
     @Published
     var isLoading = false
     
-    var subscriber: Set<AnyCancellable> = .init()
+    @Published
+    var isEmpty = false
+    
     var currentStocks: [Stock] = []
     
     let useCase: GetStockUseCase
     
     init(useCase: GetStockUseCase) {
         self.useCase = useCase
+        super.init()
+        reduce()
     }
     
     func searchQueryChanged(query: String) {
@@ -36,6 +40,16 @@ class StockListViewModel {
             self.isLoading = false
             self.currentStocks = stockResponse.items
             self.stocks = stockResponse.items
+        }.store(in: &subscriber)
+    }
+    
+    func reduce() {
+        $stocks.sink { stocks in
+            if stocks.count == 0 {
+                self.isEmpty = true
+            } else {
+                self.isEmpty = false
+            }
         }.store(in: &subscriber)
     }
     

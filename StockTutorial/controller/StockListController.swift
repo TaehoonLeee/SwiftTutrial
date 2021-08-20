@@ -11,6 +11,7 @@ class StockListController: BaseViewController, FactoryModule {
     
     let selfView = StockListView()
     let viewModel: StockListViewModel
+    var coordinator: MainCoordinator?
     
     required init(dependency: Dependency, payload: ()) {
         viewModel = dependency.viewModel
@@ -67,6 +68,10 @@ class StockListController: BaseViewController, FactoryModule {
         
         viewModel.$isLoading.sink { isLoading in
             self.selfView.loadingView.isHidden = !isLoading
+        }.store(in: &subscriber)
+        
+        viewModel.$isEmpty.sink { isEmpty in
+            self.selfView.emptyView.isHidden = !isEmpty
         }.store(in: &subscriber)
     }
 }
