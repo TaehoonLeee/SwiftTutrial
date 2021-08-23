@@ -55,6 +55,7 @@ class StockListController: BaseViewController, FactoryModule {
             .subscribe(onNext: { [self] query in
                 guard let query = query, !query.isEmpty else {
                     viewModel.stocks.removeAll()
+                    viewModel.currentStocks.removeAll()
                     
                     return
                 }
@@ -67,7 +68,6 @@ class StockListController: BaseViewController, FactoryModule {
         }.store(in: &subscriber)
         
         viewModel.$stocks.sink { stocks in
-            print(stocks)
             self.selfView.tableView.reloadData()
         }.store(in: &subscriber)
         

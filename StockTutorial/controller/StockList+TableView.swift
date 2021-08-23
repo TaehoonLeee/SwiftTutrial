@@ -12,12 +12,16 @@ extension StockListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.identifier, for: indexPath) as? StockCell ?? StockCell()
-        let item = viewModel.currentStocks[indexPath.row]
-        
-        cell.configureUI(item: item)
-        cell.selectionStyle = .none
-        
-        return cell
+        if indexPath.row > viewModel.currentStocks.count - 1 {
+            return UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.identifier, for: indexPath) as? StockCell ?? StockCell()
+            let item = viewModel.currentStocks[indexPath.row]
+            
+            cell.configureUI(item: item)
+            cell.selectionStyle = .none
+            
+            return cell
+        }
     }
 }
