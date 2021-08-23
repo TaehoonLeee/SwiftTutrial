@@ -11,6 +11,9 @@ class StockDetailViewModel: BaseViewModel {
     @Published
     var timeSeries: TimeSeries?
     
+    @Published
+    var stock: Stock?
+    
     let useCase: GetStockDetailUseCase
     
     init(useCase: GetStockDetailUseCase) {
@@ -18,7 +21,8 @@ class StockDetailViewModel: BaseViewModel {
         super.init()
     }
     
-    func viewDidLoad(symbol: String) {
+    func viewDidLoad(stock: Stock, symbol: String) {
+        self.stock = stock
         isLoading = true
         
         useCase.execute(keyword: symbol).sink { [self] completion in

@@ -29,8 +29,6 @@ class StockListViewModel: BaseViewModel {
         isLoading = true
         
         useCase.execute(keyword: query).sink { completion in
-            self.isLoading = false
-            
             switch completion {
                 case .failure(let error):
                     self.errorMsg = error.localizedDescription

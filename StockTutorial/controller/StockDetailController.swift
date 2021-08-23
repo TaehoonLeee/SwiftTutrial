@@ -10,6 +10,7 @@ class StockDetailController: BaseViewController, FactoryModule {
     
     let selfView = StockDetailView()
     let viewModel: StockDetailViewModel
+    var coordinator: MainCoordinator?
     
     let stock: Stock
     
@@ -29,7 +30,7 @@ class StockDetailController: BaseViewController, FactoryModule {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewDidLoad(symbol: stock.symbol ?? "")
+        viewModel.viewDidLoad(stock: stock, symbol: stock.symbol ?? "")
         bind()
     }
     
@@ -47,12 +48,22 @@ class StockDetailController: BaseViewController, FactoryModule {
         selfView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         selfView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         selfView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        selfView.bottomView.dateInputView.textField.delegate = self
     }
     
     func bind() {
         viewModel.$timeSeries.sink { timeSeries in
             guard let timeSeries = timeSeries else { return }
             print(timeSeries.monthInfoList)
+        }.store(in: &subscriber)
+        
+        viewModel.$stock.sink { stock in
+            guard let stock = stock else { return }
+            self.selfView.topView.configureUI(stock: stock)
+            if let currency = stock.currency {
+                self.selfView.bottomView.configureUI(currency: currency)
+            }
         }.store(in: &subscriber)
         
         viewModel.$errorMsg.sink { errorMsg in
@@ -63,5 +74,17 @@ class StockDetailController: BaseViewController, FactoryModule {
         viewModel.$isLoading.sink { isLoading in
             self.selfView.loadingView.isHidden = !isLoading
         }.store(in: &subscriber)
+    }
+}
+
+extension StockDetailController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == selfView.bottomView.dateInputView.textField {
+            coordinator?.dateInputTextFieldTapped()
+            
+            return false
+        }
+        
+        return true
     }
 }

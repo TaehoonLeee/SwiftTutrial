@@ -21,7 +21,11 @@ extension AppDependency {
             return .init(dependency: .init(stock: stock, viewModel: viewModel))
         }
         
-        let mainCoordinator: MainCoordinator = .init(dependency: .init(stockListControllerFactory: stockListControllerFactory, stockDetailControllerFactory: stockDetailControllerFactory))
+        let selectDateControllerFactory: () -> SelectDateController = {
+            .init()
+        }
+        
+        let mainCoordinator: MainCoordinator = .init(dependency: .init(stockListControllerFactory: stockListControllerFactory, stockDetailControllerFactory: stockDetailControllerFactory, selectDateControllerFactory: selectDateControllerFactory))
         
         return .init(mainCoordinator: mainCoordinator)
     }

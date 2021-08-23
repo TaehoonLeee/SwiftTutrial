@@ -22,7 +22,7 @@ class StockDetailView: BaseView {
         
         scrollView.addSubview(bottomView)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-        bottomView.topAnchor.constraint(equalTo: topView.topAnchor).isActive = true
+        bottomView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         bottomView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bottomView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         bottomView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true

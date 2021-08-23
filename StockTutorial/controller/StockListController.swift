@@ -52,8 +52,12 @@ class StockListController: BaseViewController, FactoryModule {
     func bind() {
         selfView.searchViewController.searchBar.rx.text
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { query in
-                guard let query = query, !query.isEmpty else { return }
+            .subscribe(onNext: { [self] query in
+                guard let query = query, !query.isEmpty else {
+                    viewModel.stocks.removeAll()
+                    
+                    return
+                }
                 self.viewModel.searchQueryChanged(query: query)
             }).disposed(by: disposeBag)
         
@@ -63,11 +67,13 @@ class StockListController: BaseViewController, FactoryModule {
         }.store(in: &subscriber)
         
         viewModel.$stocks.sink { stocks in
+            print(stocks)
             self.selfView.tableView.reloadData()
         }.store(in: &subscriber)
         
         viewModel.$isLoading.sink { isLoading in
             self.selfView.loadingView.isHidden = !isLoading
+            self.selfView.emptyView.isHidden = isLoading
         }.store(in: &subscriber)
         
         viewModel.$isEmpty.sink { isEmpty in

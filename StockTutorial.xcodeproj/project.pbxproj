@@ -23,6 +23,8 @@
 		E33F8B5C26CEA03000CF0F7B /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33F8B5B26CEA03000CF0F7B /* Stock.swift */; };
 		E33F8B5E26CEA29200CF0F7B /* GetStockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33F8B5D26CEA29200CF0F7B /* GetStockUseCase.swift */; };
 		E33F8B6026CEA30700CF0F7B /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33F8B5F26CEA30700CF0F7B /* StockListViewModel.swift */; };
+		E3854CBC26D0DA7400D881F3 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3854CBB26D0DA7400D881F3 /* UITextField+Extensions.swift */; };
+		E3854CBE26D0DBB200D881F3 /* SelectDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3854CBD26D0DBB200D881F3 /* SelectDateController.swift */; };
 		E3923F9426CEAF7600A840AD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3923F9326CEAF7600A840AD /* LoadingView.swift */; };
 		E3923F9626CEB0D300A840AD /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3923F9526CEB0D300A840AD /* Font.swift */; };
 		E3923F9826CEB13F00A840AD /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3923F9726CEB13F00A840AD /* StockCell.swift */; };
@@ -63,6 +65,8 @@
 		E33F8B5B26CEA03000CF0F7B /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		E33F8B5D26CEA29200CF0F7B /* GetStockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStockUseCase.swift; sourceTree = "<group>"; };
 		E33F8B5F26CEA30700CF0F7B /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
+		E3854CBB26D0DA7400D881F3 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		E3854CBD26D0DBB200D881F3 /* SelectDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateController.swift; sourceTree = "<group>"; };
 		E3923F9326CEAF7600A840AD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E3923F9526CEB0D300A840AD /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E3923F9726CEB13F00A840AD /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				E3CACD1626CFEDBB006A05E4 /* StockDetailController.swift */,
 				E3CACD2026CFFE22006A05E4 /* StockDetailViewModel.swift */,
 				E3CACD2526CFFF01006A05E4 /* BaseViewModel.swift */,
+				E3854CBD26D0DBB200D881F3 /* SelectDateController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				E3CACD2326CFFE6D006A05E4 /* Error+ErrorDescription.swift */,
+				E3854CBB26D0DA7400D881F3 /* UITextField+Extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				E3CACD1B26CFF415006A05E4 /* StockDetailTopView.swift in Sources */,
 				E33F8B5226CE989E00CF0F7B /* CompositionRoot.swift in Sources */,
 				E33F8B6026CEA30700CF0F7B /* StockListViewModel.swift in Sources */,
+				E3854CBC26D0DA7400D881F3 /* UITextField+Extensions.swift in Sources */,
 				E33F8B4A26CE94D900CF0F7B /* StockListController.swift in Sources */,
 				E3CACD2426CFFE6D006A05E4 /* Error+ErrorDescription.swift in Sources */,
 				E3CACD2626CFFF01006A05E4 /* BaseViewModel.swift in Sources */,
@@ -366,6 +373,7 @@
 				E33F8B2C26CE92AB00CF0F7B /* AppDelegate.swift in Sources */,
 				E33F8B4C26CE950700CF0F7B /* BaseView.swift in Sources */,
 				E33F8B5826CE9FB900CF0F7B /* StockRepository.swift in Sources */,
+				E3854CBE26D0DBB200D881F3 /* SelectDateController.swift in Sources */,
 				E33F8B5A26CE9FCB00CF0F7B /* StockRepositoryImpl.swift in Sources */,
 				E3CACD1F26CFF8EA006A05E4 /* TimeSeries.swift in Sources */,
 				E3923F9426CEAF7600A840AD /* LoadingView.swift in Sources */,

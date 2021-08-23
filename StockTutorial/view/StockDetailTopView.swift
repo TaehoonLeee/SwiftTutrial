@@ -64,4 +64,10 @@ class StockDetailTopView: BaseView {
         annualReturnValueLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
         annualReturnValueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
+    
+    func configureUI(stock: Stock) {
+        titleLabel.text = stock.symbol
+        subTitleLabel.text = stock.name
+        currentValueTextLabel.text = "Current Value (\(stock.currency ?? "USD"))"
+    }
 }

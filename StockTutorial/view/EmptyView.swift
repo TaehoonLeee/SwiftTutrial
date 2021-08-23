@@ -5,7 +5,7 @@ class EmptyView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        descriptionLabel.text = "This is no any contents"
+        descriptionLabel.text = "There is no any contents"
         addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
